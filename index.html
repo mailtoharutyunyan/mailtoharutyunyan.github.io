@@ -3,114 +3,597 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>VPN-FREE Privacy Policy</title>
+    <title>VPN FREE - Fast, Secure & Unlimited</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.7;
-            margin: 40px auto;
-            max-width: 800px;
-            color: #333;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
         }
-        h1, h2 {
-            color: #1c4e80;
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        h1 {
-            font-size: 2em;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        h2 {
-            margin-top: 30px;
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
         }
-        a {
-            color: #1c4e80;
-            text-decoration: none;
+
+        .animate-pulse-custom {
+            animation: pulse-custom 2s ease-in-out infinite;
         }
-        a:hover {
-            text-decoration: underline;
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .animate-slide-left {
+            animation: slideLeft 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-custom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .stats-counter {
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .parallax {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 glass-effect text-white transition-all duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <i class="fas fa-shield-alt text-blue-600"></i>
+                </div>
+                <span class="text-xl font-bold">VPN FREE</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#features" class="hover:text-blue-300 transition-colors">Features</a>
+                <a href="#stats" class="hover:text-blue-300 transition-colors">Stats</a>
+                <a href="#download" class="hover:text-blue-300 transition-colors">Download</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
 
-<h1>Privacy Policy</h1>
-<p><strong>Effective Date:</strong> April 30, 2025</p>
+<!-- Hero Section -->
+<section class="relative gradient-bg text-white py-32 min-h-screen flex items-center">
+    <div class="floating-shapes">
+        <div class="shape w-64 h-64 bg-white rounded-full"></div>
+        <div class="shape w-32 h-32 bg-blue-300 rounded-full"></div>
+        <div class="shape w-48 h-48 bg-purple-300 rounded-full"></div>
+    </div>
 
-<p>This Privacy Policy explains how <strong>VPN-FREE</strong> ("we," "us," or "our") collects, uses, shares, and protects your information when you access our website (if available), VPN-FREE and VPN-FREE Lite applications (the “Apps”), and all related services (collectively, the “Services”).</p>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="animate-slide-up">
+                <div class="inline-flex items-center space-x-2 bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm">100% Free • No Registration Required</span>
+                </div>
 
-<p>The Services are operated by <strong>VPN-FREE TECHNOLOGIES PTE. LTD.</strong> (the “Company”). This Policy is governed by and construed in accordance with the laws of the Republic of Singapore.</p>
+                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                    Your Digital
+                    <span class="block bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">
+              Freedom
+            </span>
+                    Starts Here
+                </h1>
 
-<p>By using our Services, you agree to the practices described in this Privacy Policy and our Terms of Service.</p>
+                <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+                    Experience lightning-fast, military-grade encrypted browsing with unlimited bandwidth.
+                    <span class="font-semibold text-white">Always free, always secure.</span>
+                </p>
 
-<h2>1. Commitment to User Privacy and No-Log Policy</h2>
-<p>VPN-FREE is built on a strict <strong>no-log policy</strong>. We do not collect, store, or log user activity, browsing history, IP addresses, DNS queries, or connection logs that can be tied back to any individual user.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                    <button class="btn-primary text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-2 relative z-10">
+                        <i class="fas fa-download"></i>
+                        <span>Download Free App</span>
+                    </button>
+                    <button class="glass-effect px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:bg-opacity-20 transition-all flex items-center justify-center space-x-2">
+                        <i class="fas fa-play"></i>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
 
-<h2>2. Information Collected</h2>
-<p>We minimize data collection while ensuring essential functionality:</p>
-<ul>
-    <li><strong>Anonymous Usage Data:</strong> Device type, OS version, crash logs, connection success/failure, general location (by country).</li>
-    <li><strong>Account Data:</strong> If account creation is used, we may collect your email address and password.</li>
-    <li><strong>Payment Data:</strong> Email, subscription plan, and payment method via secure third-party processors.</li>
-    <li><strong>Support Data:</strong> Messages and emails you send for support purposes.</li>
-</ul>
+                <div class="flex items-center space-x-6 text-sm">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-check-circle text-green-400"></i>
+                        <span>No Credit Card</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-check-circle text-green-400"></i>
+                        <span>No Logs Policy</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-check-circle text-green-400"></i>
+                        <span>Unlimited Data</span>
+                    </div>
+                </div>
+            </div>
 
-<h2>3. How We Use Your Information</h2>
-<ul>
-    <li>Operate and maintain the Services</li>
-    <li>Manage accounts and subscriptions</li>
-    <li>Communicate updates or issues</li>
-    <li>Respond to support requests</li>
-    <li>Improve performance and security</li>
-</ul>
+            <div class="animate-slide-left">
+                <div class="relative">
+                    <div class="w-80 h-80 mx-auto relative animate-float">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-3xl transform rotate-6 animate-pulse-custom"></div>
+                        <div class="absolute inset-0 glass-effect rounded-3xl p-8 flex flex-col justify-center items-center text-center">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 glow">
+                                <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
+                            </div>
+                            <div class="text-2xl font-bold mb-2">Protected</div>
+                            <div class="text-blue-200">Your connection is secure</div>
+                            <div class="mt-4 flex space-x-2">
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>4. Third-Party Services</h2>
-<p>We use trusted partners for essential services:</p>
-<ul>
-    <li><strong>Firebase</strong> – analytics and crash reporting</li>
-    <li><strong>Adjust</strong> – app attribution</li>
-    <li><strong>AdMob, Unity Ads, Liftoff</strong> – advertising support</li>
-</ul>
-<p>These third parties do not have access to user activity data related to VPN usage.</p>
+<!-- Stats Section -->
+<section id="stats" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+            <div class="animate-slide-up">
+                <div class="stats-counter text-4xl md:text-5xl font-black mb-2">50M+</div>
+                <div class="text-gray-600 font-medium">Active Users</div>
+            </div>
+            <div class="animate-slide-up" style="animation-delay: 0.2s">
+                <div class="stats-counter text-4xl md:text-5xl font-black mb-2">100+</div>
+                <div class="text-gray-600 font-medium">Server Locations</div>
+            </div>
+            <div class="animate-slide-up" style="animation-delay: 0.4s">
+                <div class="stats-counter text-4xl md:text-5xl font-black mb-2">99.9%</div>
+                <div class="text-gray-600 font-medium">Uptime</div>
+            </div>
+            <div class="animate-slide-up" style="animation-delay: 0.6s">
+                <div class="stats-counter text-4xl md:text-5xl font-black mb-2">∞</div>
+                <div class="text-gray-600 font-medium">Unlimited Data</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>5. Data Sharing and Transfers</h2>
-<p>We only share data in the following limited circumstances:</p>
-<ul>
-    <li>With service providers under confidentiality</li>
-    <li>During business transfers (e.g. mergers)</li>
-    <li>To comply with legal obligations</li>
-    <li>With your consent</li>
-</ul>
+<!-- Features Section -->
+<section id="features" class="py-32 bg-gradient-to-br from-gray-50 to-blue-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-black mb-6">
+                Why Choose <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">VPN FREE</span>?
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Experience the perfect blend of security, speed, and freedom with our cutting-edge VPN technology.
+            </p>
+        </div>
 
-<h2>6. Data Security Measures</h2>
-<p>We protect your data with industry-standard security including encryption, access controls, and monitoring. We do not retain any logs of VPN usage that could identify you.</p>
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="feature-card bg-white rounded-3xl p-8 text-center shadow-lg">
+                <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 glow">
+                    <i class="fas fa-shield-alt text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Military-Grade Security</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    AES-256 encryption protects your data with the same security used by governments and banks worldwide.
+                </p>
+                <div class="flex items-center justify-center space-x-2 text-sm text-blue-600 font-semibold">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Bank-Level Encryption</span>
+                </div>
+            </div>
 
-<h2>7. Your Rights</h2>
-<p>You have the right to access, correct, or delete your personal data. You can contact us at any time to exercise these rights.</p>
+            <div class="feature-card bg-white rounded-3xl p-8 text-center shadow-lg">
+                <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 glow">
+                    <i class="fas fa-bolt text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Lightning Fast Speeds</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Stream 4K videos, game online, and browse without buffering with our optimized global server network.
+                </p>
+                <div class="flex items-center justify-center space-x-2 text-sm text-green-600 font-semibold">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Unlimited Bandwidth</span>
+                </div>
+            </div>
 
-<h2>8. Data Retention</h2>
-<p>We only retain data as long as needed for the purposes stated in this policy or to meet legal obligations. After that, it's deleted or anonymized.</p>
+            <div class="feature-card bg-white rounded-3xl p-8 text-center shadow-lg">
+                <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 glow">
+                    <i class="fas fa-globe text-3xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Global Access</h3>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Access geo-blocked content from anywhere in the world with servers in 100+ countries.
+                </p>
+                <div class="flex items-center justify-center space-x-2 text-sm text-purple-600 font-semibold">
+                    <i class="fas fa-check-circle"></i>
+                    <span>100+ Server Locations</span>
+                </div>
+            </div>
+        </div>
 
-<h2>9. Region-Specific Notices</h2>
-<h3>GDPR (EEA and UK)</h3>
-<p>We comply with the General Data Protection Regulation. EU/UK users may request access, deletion, or correction of their data at any time.</p>
+        <!-- Additional Features Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+            <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-user-shield text-3xl text-blue-500 mb-4"></i>
+                <h4 class="font-bold mb-2">No Logs Policy</h4>
+                <p class="text-sm text-gray-600">Your privacy is guaranteed</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-devices text-3xl text-green-500 mb-4"></i>
+                <h4 class="font-bold mb-2">Multi-Device</h4>
+                <p class="text-sm text-gray-600">All your devices protected</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-clock text-3xl text-purple-500 mb-4"></i>
+                <h4 class="font-bold mb-2">24/7 Support</h4>
+                <p class="text-sm text-gray-600">Always here to help</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-all">
+                <i class="fas fa-magic text-3xl text-pink-500 mb-4"></i>
+                <h4 class="font-bold mb-2">One-Click Connect</h4>
+                <p class="text-sm text-gray-600">Simple and intuitive</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h3>California Privacy Rights (CCPA)</h3>
-<p>VPN-FREE does not sell your personal data. California users may request a list of collected data categories and request deletion.</p>
+<!-- Download Section -->
+<section id="download" class="py-32 gradient-bg text-white relative overflow-hidden">
+    <div class="floating-shapes">
+        <div class="shape w-40 h-40 bg-white rounded-full"></div>
+        <div class="shape w-24 h-24 bg-blue-300 rounded-full"></div>
+    </div>
 
-<h2>10. Children’s Privacy</h2>
-<p>Our Services are not intended for children under 13. We do not knowingly collect personal information from children.</p>
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <h2 class="text-4xl md:text-5xl font-black mb-6">
+            Ready to Go <span class="text-yellow-400">Anonymous</span>?
+        </h2>
+        <p class="text-xl mb-12 text-blue-100 max-w-2xl mx-auto">
+            Join millions of users who trust VPN FREE to protect their digital privacy. Download now and experience true internet freedom.
+        </p>
 
-<h2>11. Changes to This Policy</h2>
-<p>We may update this Privacy Policy. Changes will be posted in the app or on our website. Continued use of the Services implies acceptance of the updated policy.</p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <button class="bg-white text-gray-800 px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 hover:bg-gray-100 transition-all transform hover:scale-105">
+                <i class="fab fa-apple text-2xl"></i>
+                <div class="text-left">
+                    <div class="text-xs">Download for</div>
+                    <div>iOS & macOS</div>
+                </div>
+            </button>
 
-<h2>12. Contact Us</h2>
-<p>If you have any questions or requests, contact us:</p>
-<ul>
-    <li><strong>Email:</strong> <a href="mailto:support@vpn-free.app">support@vpn-free.app</a></li>
-    <li><strong>Data Protection Officer:</strong> Cecilia Fung</li>
-    <li><strong>Email (DPO):</strong> <a href="mailto:dataprotection@vpn-free.app">dataprotection@vpn-free.app</a></li>
-</ul>
+            <button class="bg-white text-gray-800 px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 hover:bg-gray-100 transition-all transform hover:scale-105">
+                <i class="fab fa-google-play text-2xl text-green-500"></i>
+                <div class="text-left">
+                    <div class="text-xs">Download for</div>
+                    <div>Android</div>
+                </div>
+            </button>
 
+            <button class="bg-white text-gray-800 px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 hover:bg-gray-100 transition-all transform hover:scale-105">
+                <i class="fab fa-windows text-2xl text-blue-500"></i>
+                <div class="text-left">
+                    <div class="text-xs">Download for</div>
+                    <div>Windows</div>
+                </div>
+            </button>
+        </div>
+
+        <div class="flex justify-center items-center space-x-8 text-sm opacity-75">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-download"></i>
+                <span>Instant Download</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-shield-alt"></i>
+                <span>Virus Free</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-star"></i>
+                <span>5-Star Rated</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-16">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">VPN FREE</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Protecting your digital freedom with cutting-edge encryption and unlimited access.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Download</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Server Status</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4">Support</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Setup Guide</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Troubleshooting</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-semibold mb-4">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm">&copy; 2025 VPN FREE. All rights reserved.</p>
+            <div class="flex items-center space-x-6 mt-4 md:mt-0 text-sm">
+          <span class="flex items-center space-x-2">
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span>All systems operational</span>
+          </span>
+                <a href="#" class="hover:text-white transition-colors">Status Page</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.background = 'rgba(0, 0, 0, 0.9)';
+        } else {
+            nav.style.background = 'rgba(255, 255, 255, 0.1)';
+        }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-slide-up, .animate-slide-left').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+    });
+
+    // Counter animation
+    const counters = document.querySelectorAll('.stats-counter');
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const target = counter.textContent;
+            const isInfinite = target === '∞';
+
+            if (isInfinite) return;
+
+            const numericTarget = parseInt(target.replace(/[^\d]/g, ''));
+            const suffix = target.replace(/[\d.]/g, '');
+            let current = 0;
+            const increment = numericTarget / 100;
+
+            const updateCounter = () => {
+                if (current < numericTarget) {
+                    current += increment;
+                    counter.textContent = Math.floor(current) + suffix;
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+
+            updateCounter();
+        });
+    };
+
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('#stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+</script>
 </body>
 </html>
