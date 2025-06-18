@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Blog - VPN FREE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .blog-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-content {
+            line-height: 1.7;
+        }
+
+        .blog-content h1, .blog-content h2, .blog-content h3 {
+            color: #1f2937;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .blog-content h2 {
+            font-size: 2rem;
+            color: #4f46e5;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: #6366f1;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: #4b5563;
+            font-size: 1.1rem;
+        }
+
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+            color: #4b5563;
+        }
+
+        .blog-content code {
+            background: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            color: #dc2626;
+        }
+
+        .blog-content pre {
+            background: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .blog-content table {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            border-collapse: collapse;
+        }
+
+        .blog-content th {
+            background: #f3f4f6;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #e5e7eb;
+        }
+
+        .blog-content td {
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .blog-meta {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        #blog-modal {
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .loading-spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .category-filter {
+            transition: all 0.3s ease;
+        }
+
+        .category-filter.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .search-input {
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 glass-effect text-white transition-all duration-300">
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <i class="fas fa-shield-alt text-blue-600"></i>
+                </div>
+                <span class="text-xl font-bold">VPN FREE</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-blue-300 transition-colors">Home</a>
+                <a href="index.html#features" class="hover:text-blue-300 transition-colors">Features</a>
+                <a href="#" class="text-blue-300">Blog</a>
+                <a href="index.html#download" class="hover:text-blue-300 transition-colors">Download</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="gradient-bg text-white py-24 pt-32">
+    <div class="container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-black mb-4">
+            VPN FREE <span class="text-yellow-400">Blog</span>
+        </h1>
+        <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+            Stay informed about privacy, security, and digital freedom with our expert insights and guides.
+        </p>
+    </div>
+</section>
+
+<!-- Search and Filter Section -->
+<section class="bg-white py-8 shadow-md sticky top-16 z-40">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <!-- Search Bar -->
+            <div class="relative w-full md:w-96">
+                <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search articles..."
+                        class="search-input w-full px-4 py-3 pl-12 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500"
+                >
+                <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap gap-2">
+                <button class="category-filter active px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm"
+                        data-category="all">
+                    All Posts
+                </button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm"
+                        data-category="Security">
+                    Security
+                </button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm"
+                        data-category="Privacy">
+                    Privacy
+                </button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm"
+                        data-category="Guide">
+                    Guides
+                </button>
+                <button class="category-filter px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-medium text-sm"
+                        data-category="Technical">
+                    Technical
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Grid Section -->
+<section class="py-16">
+    <div class="container mx-auto px-6">
+        <!-- Featured Post -->
+        <div id="featured-post" class="mb-12">
+            <!-- Featured post will be loaded here -->
+        </div>
+
+        <!-- Blog Grid -->
+        <div id="blog-grid" class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+            <!-- Blog posts will be dynamically loaded here -->
+        </div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center py-16">
+            <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+            <h3 class="text-xl font-bold text-gray-600 mb-2">No articles found</h3>
+            <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-12">
+            <button id="load-more-btn"
+                    class="gradient-bg text-white px-8 py-4 rounded-full font-bold hover:transform hover:scale-105 transition-all">
+                <i class="fas fa-plus mr-2"></i>
+                Load More Articles
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Modal -->
+<div id="blog-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="modal-content bg-white rounded-3xl max-w-4xl w-full relative">
+        <div class="sticky top-0 bg-white rounded-t-3xl p-6 border-b flex justify-between items-center z-10">
+            <h3 id="modal-title" class="text-2xl font-bold text-gray-800"></h3>
+            <button id="close-modal"
+                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
+                <i class="fas fa-times text-gray-600"></i>
+            </button>
+        </div>
+        <div id="modal-content" class="p-6 blog-content">
+            <div class="loading-spinner mx-auto"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter Section -->
+<section class="py-16 gradient-bg text-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+        <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+            Get the latest privacy tips, security updates, and VPN guides delivered to your inbox.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input
+                    type="email"
+                    placeholder="Enter your email"
+                    class="flex-1 px-6 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
+                    required
+            >
+            <button type="submit"
+                    class="bg-white text-purple-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors">
+                Subscribe
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-shield-alt text-white"></i>
+                </div>
+                <span class="text-xl font-bold text-white">VPN FREE</span>
+            </div>
+            <div class="flex space-x-6 text-sm">
+                <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center text-sm">
+            <p>&copy; 2025 VPN FREE. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Blog functionality
+    const blogPosts = [
+        {
+            id: 'vpn-security-guide',
+            title: 'Complete Guide to VPN Security',
+            excerpt: 'Learn everything about VPN protocols, encryption methods, and how to choose the most secure VPN for your needs.',
+            author: 'Security Team',
+            date: '2025-06-15',
+            readTime: '8 min read',
+            tags: ['Security', 'Guide', 'Privacy'],
+            image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop',
+            filename: 'blog/vpn-security-guide.md',
+            featured: true
+        },
+        {
+            id: 'privacy-online',
+            title: 'Protecting Your Privacy Online in 2025',
+            excerpt: 'Essential tips and tools to maintain your digital privacy in an increasingly connected world.',
+            author: 'Privacy Expert',
+            date: '2025-06-12',
+            readTime: '6 min read',
+            tags: ['Privacy', 'Tips', 'Digital Rights'],
+            image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=400&h=250&fit=crop',
+            filename: 'blog/privacy-online-2025.md'
+        },
+        {
+            id: 'streaming-vpn',
+            title: 'Best VPN Practices for Streaming',
+            excerpt: 'Optimize your streaming experience while maintaining security and accessing global content libraries.',
+            author: 'Tech Team',
+            date: '2025-06-10',
+            readTime: '5 min read',
+            tags: ['Streaming', 'Entertainment', 'Tips'],
+            image: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=400&h=250&fit=crop',
+            filename: 'blog/streaming-vpn-guide.md'
+        },
+        {
+            id: 'vpn-protocols',
+            title: 'Understanding VPN Protocols: OpenVPN vs WireGuard',
+            excerpt: 'Deep dive into the technical differences between major VPN protocols and their security implications.',
+            author: 'Technical Team',
+            date: '2025-06-08',
+            readTime: '10 min read',
+            tags: ['Technical', 'Protocols', 'Security'],
+            image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop',
+            filename: 'blog/vpn-protocols-comparison.md'
+        },
+        {
+            id: 'remote-work-security',
+            title: 'Remote Work Security: VPN Best Practices',
+            excerpt: 'Essential security measures for remote workers using VPNs to protect company data and personal privacy.',
+            author: 'Business Team',
+            date: '2025-06-05',
+            readTime: '7 min read',
+            tags: ['Business', 'Remote Work', 'Security'],
+            image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=250&fit=crop',
+            filename: 'blog/remote-work-vpn-security.md'
+        },
+        {
+            id: 'digital-freedom',
+            title: 'Digital Freedom and Internet Censorship',
+            excerpt: 'How VPNs help maintain access to information and protect freedom of expression worldwide.',
+            author: 'Advocacy Team',
+            date: '2025-06-03',
+            readTime: '9 min read',
+            tags: ['Digital Rights', 'Censorship', 'Freedom'],
+            image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop',
+            filename: 'blog/digital-freedom-vpn.md'
+        },
+        {
+            id: 'vpn-myths',
+            title: 'Debunking Common VPN Myths',
+            excerpt: 'Separating fact from fiction: what VPNs can and cannot do for your online security.',
+            author: 'Education Team',
+            date: '2025-06-01',
+            readTime: '5 min read',
+            tags: ['Education', 'Myths', 'Guide'],
+            image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=400&h=250&fit=crop',
+            filename: 'blog/vpn-myths.md'
+        },
+        {
+            id: 'mobile-vpn-setup',
+            title: 'Setting Up VPN on Mobile Devices',
+            excerpt: 'Step-by-step guide to configuring VPN on iOS and Android for maximum security.',
+            author: 'Mobile Team',
+            date: '2025-05-28',
+            readTime: '4 min read',
+            tags: ['Mobile', 'Guide', 'Setup'],
+            image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop',
+            filename: 'blog/mobile-vpn-setup.md'
+        },
+        {
+            id: 'vpn-speed-optimization',
+            title: 'Maximizing VPN Speed Without Compromising Security',
+            excerpt: 'Expert tips to get the fastest VPN connection while maintaining strong encryption.',
+            author: 'Performance Team',
+            date: '2025-05-25',
+            readTime: '6 min read',
+            tags: ['Performance', 'Technical', 'Tips'],
+            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop',
+            filename: 'blog/vpn-speed-optimization.md'
+        }
+    ];
+
+    let displayedPosts = 6;
+    let currentCategory = 'all';
+    let searchTerm = '';
+
+    function createBlogCard(post) {
+        return `
+        <article class="blog-card bg-white rounded-3xl overflow-hidden shadow-lg" data-post-id="${post.id}">
+          <div class="relative overflow-hidden">
+            <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110" loading="lazy">
+            <div class="absolute top-4 right-4">
+              ${post.tags.slice(0, 2).map(tag => `<span class="tag mr-2">${tag}</span>`).join('')}
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="blog-meta mb-3 flex items-center space-x-4">
+              <span><i class="fas fa-user mr-1"></i>${post.author}</span>
+              <span><i class="fas fa-calendar mr-1"></i>${new Date(post.date).toLocaleDateString()}</span>
+              <span><i class="fas fa-clock mr-1"></i>${post.readTime}</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 text-gray-800 hover:text-blue-600 transition-colors">${post.title}</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">${post.excerpt}</p>
+            <div class="flex items-center justify-between">
+              <button class="text-blue-600 font-semibold hover:text-blue-800 transition-colors flex items-center">
+                Read More <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+              <div class="flex space-x-2">
+                <button class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-100 transition-colors">
+                  <i class="fas fa-heart text-gray-400 hover:text-red-500"></i>
+                </button>
+                <button class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-100 transition-colors">
+                  <i class="fas fa-share text-gray-400 hover:text-blue-500"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function createFeaturedPost(post) {
+        return `
+        <article class="blog-card bg-white rounded-3xl overflow-hidden shadow-xl" data-post-id="${post.id}">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="relative overflow-hidden">
+              <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" loading="lazy">
+              <div class="absolute top-4 left-4">
+                <span class="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-bold">Featured</span>
+              </div>
+            </div>
+            <div class="p-8 flex flex-col justify-center">
+              <div class="mb-4">
+                ${post.tags.map(tag => `<span class="tag mr-2">${tag}</span>`).join('')}
+              </div>
+              <h2 class="text-3xl font-bold mb-4 text-gray-800 hover:text-blue-600 transition-colors">${post.title}</h2>
+              <p class="text-gray-600 mb-6 leading-relaxed text-lg">${post.excerpt}</p>
+              <div class="blog-meta mb-6 flex items-center space-x-4">
+                <span><i class="fas fa-user mr-1"></i>${post.author}</span>
+                <span><i class="fas fa-calendar mr-1"></i>${new Date(post.date).toLocaleDateString()}</span>
+                <span><i class="fas fa-clock mr-1"></i>${post.readTime}</span>
+              </div>
+              <button class="gradient-bg text-white px-6 py-3 rounded-full font-semibold inline-flex items-center self-start hover:transform hover:scale-105 transition-all">
+                Read Full Article <i class="fas fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function filterPosts() {
+        let filteredPosts = blogPosts;
+
+        // Filter by category
+        if (currentCategory !== 'all') {
+            filteredPosts = filteredPosts.filter(post =>
+                post.tags.some(tag => tag.toLowerCase() === currentCategory.toLowerCase())
+            );
+        }
+
+        // Filter by search term
+        if (searchTerm) {
+            filteredPosts = filteredPosts.filter(post =>
+                post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+            );
+        }
+
+        return filteredPosts;
+    }
+
+    function loadBlogPosts() {
+        const blogGrid = document.getElementById('blog-grid');
+        const featuredContainer = document.getElementById('featured-post');
+        const noResults = document.getElementById('no-results');
+        const loadMoreBtn = document.getElementById('load-more-btn');
+
+        const filteredPosts = filterPosts();
+
+        if (filteredPosts.length === 0) {
+            blogGrid.innerHTML = '';
+            featuredContainer.innerHTML = '';
+            noResults.classList.remove('hidden');
+            loadMoreBtn.style.display = 'none';
+            return;
+        }
+
+        noResults.classList.add('hidden');
+
+        // Show featured post only if no filters are active
+        if (currentCategory === 'all' && !searchTerm) {
+            const featuredPost = filteredPosts.find(post => post.featured);
+            if (featuredPost) {
+                featuredContainer.innerHTML = createFeaturedPost(featuredPost);
+            }
+        } else {
+            featuredContainer.innerHTML = '';
+        }
+
+        // Show regular posts (excluding featured if shown)
+        const regularPosts = filteredPosts.filter(post => !post.featured || currentCategory !== 'all' || searchTerm);
+        const postsToShow = regularPosts.slice(0, displayedPosts);
+
+        blogGrid.innerHTML = postsToShow.map(post => createBlogCard(post)).join('');
+
+        // Add click listeners
+        document.querySelectorAll('.blog-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (!e.target.closest('button.w-8')) {
+                    const postId = card.dataset.postId;
+                    const post = blogPosts.find(p => p.id === postId);
+                    openBlogModal(post);
+                }
+            });
+        });
+
+        // Update load more button
+        if (displayedPosts >= regularPosts.length) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'inline-flex';
+        }
+    }
+
+    async function loadMarkdownFile(filename) {
+        try {
+            const response = await fetch(filename);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const text = await response.text();
+            return text;
+        } catch (error) {
+            console.error('Error loading markdown file:', error);
+            return null;
+        }
+    }
+
+    async function openBlogModal(post) {
+        const modal = document.getElementById('blog-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+
+        modalTitle.textContent = post.title;
+        modalContent.innerHTML = '<div class="loading-spinner mx-auto"></div>';
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+
+        try {
+            // Try to load the actual markdown file
+            let markdownContent = await loadMarkdownFile(post.filename);
+
+            // If file not found, create a fallback content
+            if (!markdownContent) {
+                markdownContent = `# ${post.title}
+
+*By ${post.author} • ${new Date(post.date).toLocaleDateString()} • ${post.readTime}*
+
+${post.excerpt}
+
+## Content Not Found
+
+The full article content could not be loaded. Please ensure the markdown file exists at: \`${post.filename}\`
+
+To add content:
+1. Create a folder named \`blog\` in your project directory
+2. Add the markdown file: \`${post.filename}\`
+3. The blog will automatically load the content
+
+## Example Content Structure
+
+\`\`\`markdown
+# Article Title
+
+## Introduction
+Your introduction here...
+
+## Main Content
+Your main content here...
+
+## Conclusion
+Your conclusion here...
+\`\`\``;
+            }
+
+            // Convert markdown to HTML
+            const htmlContent = marked.parse(markdownContent);
+
+            modalContent.innerHTML = `
+              <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-l-4 border-blue-500">
+                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                  <span><i class="fas fa-user mr-1"></i>${post.author}</span>
+                  <span><i class="fas fa-calendar mr-1"></i>${new Date(post.date).toLocaleDateString()}</span>
+                  <span><i class="fas fa-clock mr-1"></i>${post.readTime}</span>
+                </div>
+                <div class="mt-2 flex space-x-2">
+                  ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+              </div>
+              ${htmlContent}
+            `;
+
+            // Apply syntax highlighting
+            modalContent.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+
+        } catch (error) {
+            modalContent.innerHTML = `
+              <div class="text-center py-8">
+                <i class="fas fa-exclamation-triangle text-4xl text-red-500 mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Error Loading Article</h3>
+                <p class="text-gray-600 mb-4">Unable to load the blog post. Please try again later.</p>
+                <p class="text-sm text-gray-500">File path: ${post.filename}</p>
+              </div>
+            `;
+        }
+    }
+
+    function closeBlogModal() {
+        const modal = document.getElementById('blog-modal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function () {
+        loadBlogPosts();
+
+        // Load more button
+        document.getElementById('load-more-btn').addEventListener('click', () => {
+            displayedPosts += 6;
+            loadBlogPosts();
+        });
+
+        // Modal close button
+        document.getElementById('close-modal').addEventListener('click', closeBlogModal);
+
+        // Close modal on backdrop click
+        document.getElementById('blog-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'blog-modal') {
+                closeBlogModal();
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeBlogModal();
+            }
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            displayedPosts = 6; // Reset to initial display count
+            loadBlogPosts();
+        });
+
+        // Category filters
+        const categoryButtons = document.querySelectorAll('.category-filter');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                // Update current category
+                currentCategory = button.dataset.category;
+                displayedPosts = 6; // Reset to initial display count
+                loadBlogPosts();
+            });
+        });
+
+        // Newsletter form
+        const newsletterForm = document.querySelector('form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for subscribing! We\'ll keep you updated with the latest VPN news and tips.');
+            newsletterForm.reset();
+        });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', function () {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.background = 'rgba(0, 0, 0, 0.9)';
+        } else {
+            nav.style.background = 'rgba(255, 255, 255, 0.1)';
+        }
+    });
+</script>
+</body>
+</html>
