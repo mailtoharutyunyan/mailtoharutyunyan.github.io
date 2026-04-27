@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
+<!-- Custom Cursor & Progress -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+<div class="scroll-progress"></div>
 
 <!-- Animated Background Layers -->
 <div class="aurora-container">
@@ -25,11 +29,11 @@
       <span class="nav-logo-text font-mono">arayik<span>_</span></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#tech">Tech Stack</a></li>
-      <li><a href="#repos">Repositories</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" class="magnetic">About</a></li>
+      <li><a href="#experience" class="magnetic">Experience</a></li>
+      <li><a href="#tech" class="magnetic">Tech Stack</a></li>
+      <li><a href="#repos" class="magnetic">Repositories</a></li>
+      <li><a href="#contact" class="magnetic">Contact</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
   </div>
@@ -66,7 +70,7 @@
       </div>
     </div>
 
-    <div class="hero-terminal spotlight-card" data-animate>
+    <div class="hero-terminal spotlight-card" data-tilt data-tilt-glare data-tilt-max-glare="0.1" data-animate>
       <div class="terminal-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
       <pre class="terminal-code font-mono"><span class="kw">public class</span> <span class="type">ArayikHarutyunyan</span> {
 
@@ -87,10 +91,10 @@
 
 <!-- Stats -->
 <div class="stats-grid">
-  <div class="stat-card spotlight-card" data-animate><div class="stat-value font-mono">6+</div><div class="stat-label">Years Experience</div></div>
-  <div class="stat-card spotlight-card" data-animate><div class="stat-value font-mono">24</div><div class="stat-label">Public Repos</div></div>
-  <div class="stat-card spotlight-card" data-animate><div class="stat-value font-mono">6</div><div class="stat-label">Industry Domains</div></div>
-  <div class="stat-card spotlight-card" data-animate><div class="stat-value font-mono">99.9%</div><div class="stat-label">System Uptime</div></div>
+  <div class="stat-card spotlight-card" data-tilt data-tilt-scale="1.05" data-animate><div class="stat-value font-mono">6+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat-card spotlight-card" data-tilt data-tilt-scale="1.05" data-animate><div class="stat-value font-mono">24</div><div class="stat-label">Public Repos</div></div>
+  <div class="stat-card spotlight-card" data-tilt data-tilt-scale="1.05" data-animate><div class="stat-value font-mono">6</div><div class="stat-label">Industry Domains</div></div>
+  <div class="stat-card spotlight-card" data-tilt data-tilt-scale="1.05" data-animate><div class="stat-value font-mono">99.9%</div><div class="stat-label">System Uptime</div></div>
 </div>
 
 <hr class="section-divider"/>
@@ -134,7 +138,7 @@
       <h3>Retail IoT System</h3>
       <p>Developed QR-code-based shelf-out management for retail stores across the US, enabling real-time inventory restocking workflows.</p>
     </div>
-    <div class="achievement-card spotlight-card" data-animate>
+    <div class="achievement-card spotlight-card" data-tilt data-animate>
       <span class="badge" style="background:rgba(125,207,255,0.15);color:var(--cyan)">ClinicMind</span>
       <h3>Healthcare Modernization</h3>
       <p>Led migration of monolithic healthcare platform to microservices, improving deployment frequency by 40%.</p>
@@ -156,7 +160,7 @@
 
   <div class="timeline">
     <div class="timeline-item current" data-animate>
-      <div class="timeline-card spotlight-card">
+      <div class="timeline-card spotlight-card" data-tilt>
         <div class="timeline-header">
           <span class="timeline-role">Senior Software Engineer</span>
           <span class="timeline-date font-mono">10/2025 – Present</span>
@@ -189,7 +193,7 @@
       </div>
     </div>
     <div class="timeline-item" data-animate>
-      <div class="timeline-card spotlight-card">
+      <div class="timeline-card spotlight-card" data-tilt>
         <div class="timeline-header">
           <span class="timeline-role">Java Developer</span>
           <span class="timeline-date font-mono">08/2022 – 10/2023</span>
@@ -230,23 +234,41 @@
 <section class="section" id="tech">
   <h2 class="section-title" data-animate>Tech <span class="gradient-text">Stack</span></h2>
   <p class="section-sub" data-animate>Technologies I work with daily</p>
-  <div class="tech-grid">
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=java" alt="Java"/><span>Java</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=spring" alt="Spring"/><span>Spring Boot</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=kotlin" alt="Kotlin"/><span>Kotlin</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=typescript" alt="TS"/><span>TypeScript</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=aws" alt="AWS"/><span>AWS</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=gcp" alt="GCP"/><span>GCP</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=docker" alt="Docker"/><span>Docker</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=kubernetes" alt="K8s"/><span>Kubernetes</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=postgres" alt="PG"/><span>PostgreSQL</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=mongodb" alt="Mongo"/><span>MongoDB</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=elasticsearch" alt="ES"/><span>Elasticsearch</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=kafka" alt="Kafka"/><span>Kafka</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=angular" alt="Angular"/><span>Angular</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=react" alt="React"/><span>React</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=nodejs" alt="Node"/><span>Node.js</span></div>
-    <div class="tech-item spotlight-card" data-animate><img src="https://skillicons.dev/icons?i=githubactions" alt="GHA"/><span>GitHub Actions</span></div>
+  <div class="tech-marquee-wrapper" data-animate>
+    <div class="tech-marquee">
+      <!-- Group 1 -->
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=java" alt="Java"/><span>Java</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=spring" alt="Spring"/><span>Spring Boot</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=kotlin" alt="Kotlin"/><span>Kotlin</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=typescript" alt="TS"/><span>TypeScript</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=aws" alt="AWS"/><span>AWS</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=gcp" alt="GCP"/><span>GCP</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=docker" alt="Docker"/><span>Docker</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=kubernetes" alt="K8s"/><span>Kubernetes</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=postgres" alt="PG"/><span>PostgreSQL</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=mongodb" alt="Mongo"/><span>MongoDB</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=elasticsearch" alt="ES"/><span>Elasticsearch</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=kafka" alt="Kafka"/><span>Kafka</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=angular" alt="Angular"/><span>Angular</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=react" alt="React"/><span>React</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node"/><span>Node.js</span></div>
+      <!-- Group 2 (Duplicate for infinite scroll) -->
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=java" alt="Java"/><span>Java</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=spring" alt="Spring"/><span>Spring Boot</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=kotlin" alt="Kotlin"/><span>Kotlin</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=typescript" alt="TS"/><span>TypeScript</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=aws" alt="AWS"/><span>AWS</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=gcp" alt="GCP"/><span>GCP</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=docker" alt="Docker"/><span>Docker</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=kubernetes" alt="K8s"/><span>Kubernetes</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=postgres" alt="PG"/><span>PostgreSQL</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=mongodb" alt="Mongo"/><span>MongoDB</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=elasticsearch" alt="ES"/><span>Elasticsearch</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=kafka" alt="Kafka"/><span>Kafka</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=angular" alt="Angular"/><span>Angular</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=react" alt="React"/><span>React</span></div>
+      <div class="tech-item spotlight-card"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node"/><span>Node.js</span></div>
+    </div>
   </div>
 </section>
 
@@ -268,16 +290,16 @@
   <h2 class="section-title" data-animate>Let's <span class="gradient-text">Connect</span></h2>
   <p class="section-sub" data-animate>Feel free to reach out for collaborations or opportunities</p>
   <div class="contact-grid" data-animate>
-    <a href="https://www.linkedin.com/in/arayik-harutyunyan/" target="_blank" rel="noopener" class="contact-card spotlight-card">
+    <a href="https://www.linkedin.com/in/arayik-harutyunyan/" target="_blank" rel="noopener" class="contact-card spotlight-card magnetic">
       <i class="fa-brands fa-linkedin-in" style="color:#0077B5"></i><span>LinkedIn</span>
     </a>
-    <a href="mailto:mailtoharutyunyan@gmail.com" class="contact-card spotlight-card">
+    <a href="mailto:mailtoharutyunyan@gmail.com" class="contact-card spotlight-card magnetic">
       <i class="fa-regular fa-envelope" style="color:var(--red)"></i><span>Gmail</span>
     </a>
-    <a href="https://github.com/mailtoharutyunyan" target="_blank" rel="noopener" class="contact-card spotlight-card">
+    <a href="https://github.com/mailtoharutyunyan" target="_blank" rel="noopener" class="contact-card spotlight-card magnetic">
       <i class="fa-brands fa-github" style="color:var(--text)"></i><span>GitHub</span>
     </a>
-    <a href="tel:+37477979533" class="contact-card spotlight-card">
+    <a href="tel:+37477979533" class="contact-card spotlight-card magnetic">
       <i class="fa-solid fa-phone" style="color:var(--green)"></i><span>+374 77 979533</span>
     </a>
   </div>
@@ -289,6 +311,7 @@
   <div class="footer-status"><span></span> Available for opportunities</div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 <script src="src/app.js"></script>
 </body>
 </html>

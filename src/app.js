@@ -100,6 +100,13 @@ async function loadRepos() {
     grid.querySelectorAll('[data-animate]').forEach(el => {
       revealObserver.observe(el);
     });
+    
+    // Initialize Tilt on repos
+    if (window.VanillaTilt) {
+      VanillaTilt.init(grid.querySelectorAll('.repo-card'), {
+        max: 8, speed: 400, glare: true, "max-glare": 0.1
+      });
+    }
   } catch (e) {
     grid.innerHTML = '<p class="repos-loading">Failed to load repositories.</p>';
   }
@@ -122,3 +129,63 @@ window.addEventListener('scroll', () => {
     ticking = true;
   }
 });
+
+// ===== Custom Cursor =====
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorRing = document.querySelector('.cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+if (cursorDot && cursorRing) {
+  window.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursorDot.style.left = `${mouseX}px`;
+    cursorDot.style.top = `${mouseY}px`;
+  });
+  
+  const renderCursor = () => {
+    ringX += (mouseX - ringX) * 0.2;
+    ringY += (mouseY - ringY) * 0.2;
+    cursorRing.style.left = `${ringX}px`;
+    cursorRing.style.top = `${ringY}px`;
+    requestAnimationFrame(renderCursor);
+  };
+  requestAnimationFrame(renderCursor);
+
+  document.querySelectorAll('a, button, .magnetic, .repo-card').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+  });
+}
+
+// ===== Scroll Progress =====
+const progressBar = document.querySelector('.scroll-progress');
+window.addEventListener('scroll', () => {
+  if (progressBar) {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    progressBar.style.width = `${(winScroll / height) * 100}%`;
+  }
+});
+
+// ===== Magnetic Buttons =====
+document.querySelectorAll('.magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = 'translate(0px, 0px)';
+  });
+});
+
+// ===== 3D Tilt Cards =====
+if (window.VanillaTilt) {
+  VanillaTilt.init(document.querySelectorAll('.spotlight-card'), {
+    max: 3,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.05
+  });
+}

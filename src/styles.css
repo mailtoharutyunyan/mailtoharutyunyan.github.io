@@ -30,8 +30,36 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  cursor: none;
 }
+a, button, input { cursor: none; }
 .font-mono { font-family: 'Fira Code', monospace; }
+
+/* ===== Custom Cursor & Progress ===== */
+.cursor-dot {
+  width: 8px; height: 8px; background: var(--blue); border-radius: 50%;
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--glow-blue);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+}
+.cursor-ring {
+  width: 32px; height: 32px; border: 1px solid rgba(108,159,255,0.4); border-radius: 50%;
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
+}
+body.hovering .cursor-dot { width: 0; height: 0; }
+body.hovering .cursor-ring { width: 50px; height: 50px; border-color: var(--purple); background: rgba(192,132,252,0.1); }
+
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--blue), var(--purple), var(--magenta), var(--red));
+  z-index: 10000;
+  box-shadow: 0 0 10px var(--glow-purple);
+}
+
+.magnetic { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg-dark); }
@@ -319,13 +347,33 @@ body {
 .achievement-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
 .achievement-card p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
 
-/* ===== Tech Stack ===== */
-.tech-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 14px;
+/* ===== Tech Stack Marquee ===== */
+.tech-marquee-wrapper {
+  overflow: hidden; width: 100vw; position: relative; left: 50%; right: 50%;
+  margin-left: -50vw; margin-right: -50vw;
+  padding: 20px 0;
 }
+.tech-marquee-wrapper::before, .tech-marquee-wrapper::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 150px; z-index: 2; pointer-events: none;
+}
+.tech-marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg) 0%, transparent 100%); }
+.tech-marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg) 0%, transparent 100%); }
+
+.tech-marquee {
+  display: flex; width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.tech-marquee:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .tech-item {
   display: flex; flex-direction: column; align-items: center; gap: 12px;
-  padding: 28px 16px; cursor: default;
+  padding: 28px 40px; margin: 0 10px; cursor: default;
+  min-width: 140px;
 }
 .tech-item img {
   width: 52px; height: 52px;
