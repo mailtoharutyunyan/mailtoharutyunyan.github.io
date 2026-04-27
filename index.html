@@ -64,9 +64,10 @@
       </div>
 
       <div class="hero-links" data-animate>
-        <a href="https://github.com/mailtoharutyunyan" target="_blank" class="btn-primary"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/arayik-harutyunyan/" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="mailto:mailtoharutyunyan@gmail.com" class="btn-outline"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://github.com/mailtoharutyunyan" target="_blank" class="btn-primary magnetic"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/arayik-harutyunyan/" target="_blank" class="btn-outline magnetic"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="mailto:mailtoharutyunyan@gmail.com" class="btn-outline magnetic"><i class="fas fa-envelope"></i> Email</a>
+        <a href="Arayik_Harutyunyan_CV.pdf" download class="btn-outline magnetic"><i class="fas fa-file-pdf"></i> Download CV</a>
       </div>
     </div>
 
@@ -230,6 +231,25 @@
 
 <hr class="section-divider"/>
 
+<!-- Architecture -->
+<section class="section" id="architecture">
+  <h2 class="section-title" data-animate>System <span class="gradient-text-alt">Architecture</span></h2>
+  <p class="section-sub" data-animate>High-level semantic search platform (MXP) pipeline</p>
+  <div class="arch-diagram" data-animate>
+    <div class="arch-node spotlight-card"><span>User Query</span></div>
+    <div class="arch-line"></div>
+    <div class="arch-node spotlight-card"><span>API Gateway</span></div>
+    <div class="arch-line"></div>
+    <div class="arch-node spotlight-card"><span>NestJS<br><small>Query Comprehension</small></span></div>
+    <div class="arch-line"></div>
+    <div class="arch-node spotlight-card"><span>AWS Bedrock<br><small>Embeddings</small></span></div>
+    <div class="arch-line"></div>
+    <div class="arch-node spotlight-card"><span>OpenSearch<br><small>kNN Vector Search</small></span></div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
 <!-- Tech Stack -->
 <section class="section" id="tech">
   <h2 class="section-title" data-animate>Tech <span class="gradient-text">Stack</span></h2>
@@ -278,6 +298,11 @@
 <section class="section" id="repos">
   <h2 class="section-title" data-animate>GitHub <span class="gradient-text">Repositories</span></h2>
   <p class="section-sub" data-animate>Live data from the GitHub API — my latest public projects</p>
+  
+  <div class="github-graph-container" data-animate>
+    <img src="https://ghchart.rshah.org/6c9fff/mailtoharutyunyan" alt="GitHub Contribution Graph" class="github-graph" />
+  </div>
+
   <div id="repos-grid" class="repos-grid">
     <p class="repos-loading font-mono"><i class="fas fa-spinner fa-spin"></i> Loading repositories...</p>
   </div>
@@ -302,6 +327,9 @@
     <a href="tel:+37477979533" class="contact-card spotlight-card magnetic">
       <i class="fa-solid fa-phone" style="color:var(--green)"></i><span>+374 77 979533</span>
     </a>
+    <a href="Arayik_Harutyunyan_CV.pdf" download class="contact-card spotlight-card magnetic">
+      <i class="fa-solid fa-file-pdf" style="color:var(--orange)"></i><span>Download CV</span>
+    </a>
   </div>
 </section>
 
@@ -313,5 +341,24 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 <script src="src/app.js"></script>
+
+<!-- Terminal Overlay -->
+<div id="terminal-overlay" class="terminal-overlay hidden">
+  <div class="term-window">
+    <div class="term-header">
+      <div class="term-btns"><span class="r"></span><span class="y"></span><span class="g" id="term-close"></span></div>
+      <div class="term-title font-mono">arayik@system: ~</div>
+    </div>
+    <div class="term-body font-mono" id="term-output">
+      <p class="term-msg" style="color:var(--cyan)">Welcome to Arayik's Interactive Terminal v1.0.0.</p>
+      <p class="term-msg">Type 'help' for a list of available commands.</p>
+    </div>
+    <div class="term-input-line font-mono">
+      <span class="term-prompt">➜  ~</span>
+      <input type="text" id="term-input" autocomplete="off" spellcheck="false" />
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

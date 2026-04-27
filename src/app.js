@@ -189,3 +189,75 @@ if (window.VanillaTilt) {
     "max-glare": 0.05
   });
 }
+
+// ===== UI Audio (Web Audio API) =====
+let audioCtx;
+function initAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+function playTone(freq, type, duration, vol) {
+  if (!audioCtx) return;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = type; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+  gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+  osc.connect(gain); gain.connect(audioCtx.destination);
+  osc.start(); osc.stop(audioCtx.currentTime + duration);
+}
+
+document.addEventListener('click', initAudio, { once: true });
+document.querySelectorAll('a, button, .magnetic, .repo-card').forEach(el => {
+  el.addEventListener('mouseenter', () => playTone(800, 'sine', 0.05, 0.02));
+  el.addEventListener('click', () => playTone(400, 'triangle', 0.1, 0.05));
+});
+
+// ===== Easter Egg Terminal =====
+let clicks = 0;
+let clickTimer;
+const avatar = document.querySelector('.hero-avatar');
+const overlay = document.getElementById('terminal-overlay');
+const termInput = document.getElementById('term-input');
+const termOutput = document.getElementById('term-output');
+
+if (avatar && overlay) {
+  avatar.addEventListener('click', () => {
+    clicks++;
+    clearTimeout(clickTimer);
+    clickTimer = setTimeout(() => clicks = 0, 1000);
+    if (clicks >= 5) {
+      clicks = 0;
+      overlay.classList.remove('hidden');
+      termInput.focus();
+    }
+  });
+  
+  document.getElementById('term-close').addEventListener('click', () => {
+    overlay.classList.add('hidden');
+  });
+
+  termInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = termInput.value.trim().toLowerCase();
+      termInput.value = '';
+      
+      const pCmd = document.createElement('p');
+      pCmd.innerHTML = `<span style="color:var(--green)">➜  ~</span> ${val}`;
+      termOutput.appendChild(pCmd);
+
+      const pRes = document.createElement('p');
+      if (val === 'help') pRes.innerHTML = 'Commands: help, whoami, skills, clear, exit';
+      else if (val === 'whoami') pRes.innerHTML = 'Arayik Harutyunyan - Senior Java Engineer building search platforms.';
+      else if (val === 'skills') pRes.innerHTML = 'Java, Kotlin, AWS, Kubernetes, Semantic Search, Microservices';
+      else if (val === 'clear') { termOutput.innerHTML = ''; return; }
+      else if (val === 'exit') { overlay.classList.add('hidden'); return; }
+      else if (val !== '') pRes.innerHTML = `zsh: command not found: ${val}`;
+      
+      if (val !== '') {
+        pRes.style.color = 'var(--text-dim)';
+        termOutput.appendChild(pRes);
+      }
+      termOutput.scrollTop = termOutput.scrollHeight;
+    }
+  });
+}

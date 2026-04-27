@@ -419,6 +419,77 @@ body {
 }
 .timeline-tags span:hover { background: rgba(108,159,255,0.12); border-color: var(--blue); transform: translateY(-1px); }
 
+/* ===== Architecture Diagram ===== */
+.arch-diagram {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  max-width: 600px; margin: 0 auto; padding: 40px 0;
+}
+.arch-node {
+  padding: 20px 40px; text-align: center; font-weight: 700; font-size: 18px;
+  min-width: 250px; border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px rgba(108,159,255,0.05);
+}
+.arch-node small { display: block; font-size: 13px; color: var(--text-dim); font-weight: 500; margin-top: 4px; }
+.arch-line {
+  width: 2px; height: 30px;
+  background: linear-gradient(to bottom, var(--blue), var(--purple));
+  position: relative;
+}
+.arch-line::after {
+  content: ''; position: absolute; bottom: -4px; left: -4px;
+  width: 10px; height: 10px; border-bottom: 2px solid var(--purple); border-right: 2px solid var(--purple);
+  transform: rotate(45deg);
+}
+
+/* ===== GitHub Graph ===== */
+.github-graph-container {
+  display: flex; justify-content: center;
+  background: var(--surface); padding: 24px; border-radius: 16px;
+  border: 1px solid var(--border); margin-bottom: 40px;
+  overflow-x: auto;
+}
+.github-graph { min-width: 700px; width: 100%; filter: hue-rotate(220deg) saturate(1.5); }
+
+/* ===== Terminal Overlay ===== */
+.terminal-overlay {
+  position: fixed; inset: 0; z-index: 100000;
+  background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1; transition: opacity 0.4s;
+}
+.terminal-overlay.hidden { opacity: 0; pointer-events: none; }
+.term-window {
+  width: 90%; max-width: 800px; height: 60vh;
+  background: #0a0a0f; border-radius: 12px; border: 1px solid var(--border);
+  box-shadow: 0 0 100px rgba(108,159,255,0.2);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.term-header {
+  display: flex; align-items: center; padding: 12px 16px;
+  background: #12121a; border-bottom: 1px solid var(--border);
+}
+.term-btns { display: flex; gap: 8px; }
+.term-btns span { width: 12px; height: 12px; border-radius: 50%; }
+.term-btns .r { background: var(--red); }
+.term-btns .y { background: var(--yellow); }
+.term-btns .g { background: var(--green); cursor: pointer; }
+.term-title { flex: 1; text-align: center; color: var(--text-dim); font-size: 13px; }
+.term-body {
+  flex: 1; padding: 20px; overflow-y: auto; color: var(--text);
+  font-size: 15px; line-height: 1.6;
+}
+.term-msg { margin-bottom: 8px; }
+.term-input-line {
+  display: flex; align-items: center; gap: 10px; padding: 20px;
+  background: #060609; border-top: 1px solid var(--border);
+}
+.term-prompt { color: var(--green); font-weight: bold; }
+.term-input-line input {
+  flex: 1; background: transparent; border: none; outline: none;
+  color: var(--text); font-family: 'Fira Code', monospace; font-size: 15px;
+}
+
 /* ===== Repos ===== */
 .repos-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(360px,1fr)); gap: 16px;
