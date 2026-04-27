@@ -193,10 +193,16 @@ if (window.VanillaTilt) {
 // ===== UI Audio (Web Audio API) =====
 let audioCtx;
 function initAudio() {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
 }
 function playTone(freq, type, duration, vol) {
   if (!audioCtx) return;
+  if (audioCtx.state === 'suspended') audioCtx.resume();
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
   osc.type = type; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
@@ -207,6 +213,7 @@ function playTone(freq, type, duration, vol) {
 }
 
 document.addEventListener('click', initAudio, { once: true });
+document.addEventListener('keydown', initAudio, { once: true });
 document.querySelectorAll('a, button, .magnetic, .repo-card').forEach(el => {
   el.addEventListener('mouseenter', () => playTone(800, 'sine', 0.05, 0.02));
   el.addEventListener('click', () => playTone(400, 'triangle', 0.1, 0.05));
