@@ -534,10 +534,17 @@ body {
   .section-title { font-size: 36px; }
   .hero-badge { margin: 0 auto 24px; }
   .section { padding: 80px 20px; }
+  
+  /* Disable custom cursor on mobile touch screens */
+  .cursor-dot, .cursor-ring { display: none !important; }
+  body, a, button, input { cursor: auto !important; }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size: 36px; letter-spacing: -1.5px; }
   .section-title { font-size: 28px; }
   .stats-grid { gap: 12px; }
   .stat-value { font-size: 28px; }
+  .timeline { padding-left: 32px; }
+  .timeline::before { left: 8px; }
+  .timeline-item::before { left: -30px; width: 10px; height: 10px; }
 }
