@@ -1,75 +1,249 @@
-<!doctype html>
-<html lang="en" data-beasties-container>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>SimpleVPN - Secure Your Connection | Military-Grade Encryption</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SimpleVPN provides secure, fast, and reliable VPN services. Browse without borders, protect your data with military-grade encryption, and experience lightning-fast speeds.">
-  <meta name="keywords" content="VPN, secure browsing, privacy, encryption, online security, fast VPN, military-grade encryption">
-  <meta name="author" content="SimpleVPN">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="SimpleVPN - Secure Your Connection">
-  <meta property="og:description" content="Browse without borders with military-grade encryption and lightning-fast speeds.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://simplevpn.com">
-  <meta property="og:image" content="https://simplevpn.com/assets/images/og-image.jpg">
-
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SimpleVPN - Secure Your Connection">
-  <meta name="twitter:description" content="Browse without borders with military-grade encryption and lightning-fast speeds.">
-  <meta name="twitter:image" content="https://simplevpn.com/assets/images/twitter-image.jpg">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-  <!-- Schema.org structured data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "SimpleVPN",
-      "description": "Secure VPN service with military-grade encryption",
-      "url": "https://simplevpn.com",
-      "applicationCategory": "SecurityApplication",
-      "operatingSystem": "Windows, macOS, iOS, Android, Linux",
-      "offers": {
-        "@type": "Offer",
-        "price": "4.99",
-        "priceCurrency": "USD"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "10000"
-      }
-    }
-  </script>
-<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;line-height:1.6;color:#334155;overflow-x:hidden}html{scroll-behavior:smooth}</style><link rel="stylesheet" href="styles.90961d293ea89405.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.90961d293ea89405.css"></noscript></head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arayik Harutyunyan — Senior Java Software Engineer</title>
+  <meta name="description" content="Portfolio of Arayik Harutyunyan — Senior Java Software Engineer with 6+ years building cloud-native, AI-powered systems."/>
+  <link rel="stylesheet" href="src/styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
 <body>
-<app-root></app-root>
 
-<!-- Performance monitoring -->
-<script>
-  // Basic performance monitoring
-  window.addEventListener('load', () => {
-    if ('performance' in window) {
-      const perfData = performance.timing;
-      const loadTime = perfData.loadEventEnd - perfData.navigationStart;
-      console.log('Page load time:', loadTime + 'ms');
-    }
-  });
-</script>
-<script src="runtime.2cc96ca9a6d41c80.js" type="module"></script><script src="polyfills.8077036fdc2d1d28.js" type="module"></script><script src="main.90daa886b8e5aa5c.js" type="module"></script></body>
+<!-- Nav -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon"><i class="fas fa-terminal" style="color:#1a1b26"></i></div>
+      <span class="nav-logo-text font-mono">arayik<span>_</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#tech">Tech Stack</a></li>
+      <li><a href="#repos">Repositories</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-blob" style="width:400px;height:400px;background:#7aa2f7;top:10%;left:5%"></div>
+  <div class="hero-bg-blob" style="width:500px;height:500px;background:#bb9af7;bottom:5%;right:5%;animation-delay:2s"></div>
+  <div class="hero-bg-blob" style="width:300px;height:300px;background:#ff9e64;top:40%;right:25%;animation-delay:1s;opacity:0.1"></div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge font-mono">
+        <span class="hero-badge-dot"></span>
+        <span style="color:var(--purple)">status</span> == <span style="color:var(--green)">'open_to_work'</span>
+      </div>
+
+      <img src="https://github.com/mailtoharutyunyan.png" alt="Arayik Harutyunyan" class="hero-avatar" style="display:block;margin-bottom:24px"/>
+
+      <h1>
+        Hi, I'm <span class="gradient-text">Arayik</span>
+        <span class="line2">Harutyunyan<span style="color:var(--red)">_</span></span>
+      </h1>
+
+      <div class="typewriter-wrap font-mono">
+        <span style="color:var(--blue)">~ ❯</span>
+        <span><span id="typewriter"></span><span class="typewriter-cursor">|</span></span>
+      </div>
+
+      <div class="hero-links">
+        <a href="https://github.com/mailtoharutyunyan" target="_blank" class="btn-primary"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/arayik-harutyunyan/" target="_blank" class="btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="mailto:mailtoharutyunyan@gmail.com" class="btn-outline"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </div>
+
+    <div class="hero-terminal" data-animate>
+      <div class="terminal-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+      <pre class="terminal-code font-mono"><span class="kw">public class</span> <span class="type">ArayikHarutyunyan</span> {
+
+  <span class="kw">static final</span> <span class="type">String</span> <span class="field">ROLE</span> =
+    <span class="str">"Senior Java Software Engineer"</span>;
+  <span class="kw">static final</span> <span class="type">String</span> <span class="field">COMPANY</span> =
+    <span class="str">"Grid Dynamics (HelloFresh)"</span>;
+  <span class="kw">static final</span> <span class="type">String</span> <span class="field">LOCATION</span> =
+    <span class="str">"Yerevan, Armenia"</span>;
+  <span class="kw">static final int</span> <span class="field">YOE</span> = <span class="str">6</span>;
+
+  <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="field">focus</span> = <span class="type">List</span>.of(
+    <span class="str">"Semantic Search & AI Platforms"</span>,
+    <span class="str">"AWS Bedrock & LangChain4j"</span>,
+    <span class="str">"Cloud-Native Microservices"</span>
+  );
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-grid">
+  <div class="stat-card" data-animate><div class="stat-value font-mono">6+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat-card" data-animate><div class="stat-value font-mono">24</div><div class="stat-label">Public Repos</div></div>
+  <div class="stat-card" data-animate><div class="stat-value font-mono">6</div><div class="stat-label">Industry Domains</div></div>
+  <div class="stat-card" data-animate><div class="stat-value font-mono">99.9%</div><div class="stat-label">System Uptime</div></div>
+</div>
+
+<hr class="section-divider"/>
+
+<!-- About -->
+<section class="section" id="about">
+  <h2 class="section-title" data-animate>About <span class="gradient-text">Me</span></h2>
+  <p class="section-sub" data-animate>Results-driven Senior Java Engineer architecting scalable backend systems across fintech, media, healthcare, retail, and e-commerce.</p>
+  <div style="max-width:800px;margin:0 auto" data-animate>
+    <div class="glass-card" style="padding:32px">
+      <p style="color:var(--text-muted);font-size:15px;line-height:1.8">
+        Currently building enterprise-grade <strong style="color:var(--cyan)">semantic search and AI-powered platforms</strong> at
+        <strong style="color:var(--green)">Grid Dynamics</strong> for HelloFresh, leveraging
+        <strong style="color:var(--orange)">AWS Bedrock</strong>, <strong style="color:var(--blue)">OpenSearch</strong>, and
+        <strong style="color:var(--purple)">LangChain4j</strong>. Proven track record in leading technical teams, modernizing legacy
+        platforms, and driving cloud-native transformations on AWS and GCP.
+      </p>
+      <div style="margin-top:20px;display:flex;gap:24px;flex-wrap:wrap">
+        <span style="color:var(--text-dim);font-size:13px"><i class="fas fa-map-marker-alt" style="color:var(--red);margin-right:6px"></i>Yerevan, Armenia</span>
+        <span style="color:var(--text-dim);font-size:13px"><i class="fas fa-graduation-cap" style="color:var(--blue);margin-right:6px"></i>BS Informatics & CS — NUACA 2018</span>
+        <span style="color:var(--text-dim);font-size:13px"><i class="fas fa-language" style="color:var(--purple);margin-right:6px"></i>Armenian · English · Russian</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- Experience -->
+<section class="section" id="experience">
+  <h2 class="section-title" data-animate>Professional <span class="gradient-text">Experience</span></h2>
+  <p class="section-sub" data-animate>Building production-grade systems across 6 industry domains</p>
+
+  <div class="timeline" style="max-width:800px;margin:0 auto">
+    <div class="timeline-item current" data-animate>
+      <div class="timeline-header">
+        <span class="timeline-role">Senior Software Engineer</span>
+        <span class="timeline-date font-mono">10/2025 – Present</span>
+      </div>
+      <div class="timeline-company">Grid Dynamics — HelloFresh</div>
+      <p class="timeline-desc">Built enterprise semantic search platform (MXP) with multi-stage pipeline: query comprehension, vector search, rule-based ranking. Implemented AWS Bedrock embeddings + OpenSearch KNN for natural language product discovery.</p>
+      <div class="timeline-tags"><span>Java 17</span><span>Spring Boot 4</span><span>OpenSearch</span><span>AWS Bedrock</span><span>LangChain4j</span><span>gRPC</span><span>GKE</span></div>
+    </div>
+    <div class="timeline-item" data-animate>
+      <div class="timeline-header">
+        <span class="timeline-role">Full Stack Engineer</span>
+        <span class="timeline-date font-mono">03/2025 – 09/2025</span>
+      </div>
+      <div class="timeline-company">Teletronics — Dubai</div>
+      <p class="timeline-desc">End-to-end development of enterprise web application. Developed backend services using NestJS with TypeScript, designed RESTful APIs.</p>
+      <div class="timeline-tags"><span>NestJS</span><span>TypeScript</span><span>Node.js</span></div>
+    </div>
+    <div class="timeline-item" data-animate>
+      <div class="timeline-header">
+        <span class="timeline-role">Java Software Engineer</span>
+        <span class="timeline-date font-mono">12/2023 – 05/2025</span>
+      </div>
+      <div class="timeline-company">Grid Dynamics — Home Depot</div>
+      <p class="timeline-desc">Developed QR-code-based shelf-out management system for Home Depot retail stores across the US, enabling real-time inventory restocking workflows.</p>
+      <div class="timeline-tags"><span>Java 17</span><span>Spring Boot</span><span>PostgreSQL</span><span>GCP</span></div>
+    </div>
+    <div class="timeline-item" data-animate>
+      <div class="timeline-header">
+        <span class="timeline-role">Java Developer</span>
+        <span class="timeline-date font-mono">08/2022 – 10/2023</span>
+      </div>
+      <div class="timeline-company">ClinicMind (Verice) — Healthcare</div>
+      <p class="timeline-desc">Led migration of monolithic healthcare platform to microservices. Improved deployment frequency by 40%. Led team of 5 developers.</p>
+      <div class="timeline-tags"><span>Java 17</span><span>Kotlin</span><span>Angular 15</span><span>MongoDB</span><span>AWS</span></div>
+    </div>
+    <div class="timeline-item" data-animate>
+      <div class="timeline-header">
+        <span class="timeline-role">Java Developer</span>
+        <span class="timeline-date font-mono">01/2021 – 08/2022</span>
+      </div>
+      <div class="timeline-company">WMG-ENKE — Warner Music Group</div>
+      <p class="timeline-desc">Designed event-driven distribution pipeline handling millions of transactions daily with sub-second latency. Achieved 99.9% availability.</p>
+      <div class="timeline-tags"><span>Java 17</span><span>AWS Lambda</span><span>EKS</span><span>Snowflake</span><span>Elasticsearch</span></div>
+    </div>
+    <div class="timeline-item" data-animate>
+      <div class="timeline-header">
+        <span class="timeline-role">Java Developer</span>
+        <span class="timeline-date font-mono">09/2019 – 01/2021</span>
+      </div>
+      <div class="timeline-company">EGS — Banking Chatbot</div>
+      <p class="timeline-desc">Integrated Dialogflow and Rasa NLP engines to power intelligent banking assistant. Reduced release cycles by 30%.</p>
+      <div class="timeline-tags"><span>Kotlin</span><span>Spring Boot</span><span>MySQL</span><span>Dialogflow</span><span>Docker</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- Tech Stack -->
+<section class="section" id="tech">
+  <h2 class="section-title" data-animate>Tech <span class="gradient-text">Stack</span></h2>
+  <p class="section-sub" data-animate>Technologies I work with daily</p>
+  <div class="tech-grid" data-animate>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=java" alt="Java"/><span>Java</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=spring" alt="Spring"/><span>Spring Boot</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=kotlin" alt="Kotlin"/><span>Kotlin</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=typescript" alt="TS"/><span>TypeScript</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=aws" alt="AWS"/><span>AWS</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=gcp" alt="GCP"/><span>GCP</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=docker" alt="Docker"/><span>Docker</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=kubernetes" alt="K8s"/><span>Kubernetes</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=postgres" alt="PG"/><span>PostgreSQL</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=mongodb" alt="Mongo"/><span>MongoDB</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=elasticsearch" alt="ES"/><span>Elasticsearch</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=kafka" alt="Kafka"/><span>Kafka</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=angular" alt="Angular"/><span>Angular</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=react" alt="React"/><span>React</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=nodejs" alt="Node"/><span>Node.js</span></div>
+    <div class="tech-item"><img src="https://skillicons.dev/icons?i=githubactions" alt="GHA"/><span>GitHub Actions</span></div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- GitHub Repos -->
+<section class="section" id="repos">
+  <h2 class="section-title" data-animate>GitHub <span class="gradient-text">Repositories</span></h2>
+  <p class="section-sub" data-animate>Live data from the GitHub API — my latest public projects</p>
+  <div id="repos-grid" class="repos-grid">
+    <p class="repos-loading font-mono"><i class="fas fa-spinner fa-spin"></i> Loading repositories...</p>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <h2 class="section-title" data-animate>Let's <span class="gradient-text">Connect</span></h2>
+  <p class="section-sub" data-animate>Feel free to reach out for collaborations or opportunities</p>
+  <div class="contact-grid" data-animate>
+    <a href="https://www.linkedin.com/in/arayik-harutyunyan/" target="_blank" class="contact-card glass-card">
+      <i class="fab fa-linkedin" style="color:#0077B5"></i><span>LinkedIn</span>
+    </a>
+    <a href="mailto:mailtoharutyunyan@gmail.com" class="contact-card glass-card">
+      <i class="fas fa-envelope" style="color:var(--red)"></i><span>Gmail</span>
+    </a>
+    <a href="https://github.com/mailtoharutyunyan" target="_blank" class="contact-card glass-card">
+      <i class="fab fa-github" style="color:var(--text)"></i><span>GitHub</span>
+    </a>
+    <a href="tel:+37477979533" class="contact-card glass-card">
+      <i class="fab fa-whatsapp" style="color:var(--green)"></i><span>+374 77 979533</span>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer font-mono">
+  <p>&copy; 2025 Arayik Harutyunyan. All rights reserved.</p>
+  <div class="footer-status"><span></span> Available for opportunities</div>
+</footer>
+
+<script src="src/app.js"></script>
+</body>
 </html>
